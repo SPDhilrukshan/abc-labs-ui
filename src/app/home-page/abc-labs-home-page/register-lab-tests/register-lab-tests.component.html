@@ -1,0 +1,54 @@
+<!-- <div style="display: flex;">
+    <div [formGroup]="labTestRegisterForm" class="row">
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Lab Test Name: </label>
+                <input type="text" formControlName="labTestName">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Description: </label>
+                <textarea formControlName="labTestdescription"></textarea>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Lab Test Cost: </label>
+                <input type="text" (keypress)="inputValidator($event)" maxlength="10" formControlName="labTestcost">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <button class="save-button" (click)="saveLabTesTForm()"
+                    [disabled]="!labTestRegisterForm.valid">Save</button>
+                <button class="cancel-button" (click)="cancelLabTesTForm()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div [formGroup]="labTestRegisterForm" class="row">
+    <table>
+        <tr>
+            <td><label>Lab Test Name: </label></td>
+            <td><input type="text" style="width: 150%;" formControlName="labTestName"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Description: </label></td>
+            <td><textarea style="width: 150%;" formControlName="labTestdescription"></textarea></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Lab Test Cost: </label></td>
+            <td><input type="text" style="width: 150%;" (keypress)="inputValidator($event)" maxlength="10" formControlName="labTestcost">
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td><button class="save-button" (click)="saveLabTesTForm()"
+                    [disabled]="!labTestRegisterForm.valid">Save</button></td>
+            <td><button class="cancel-button" (click)="cancelLabTesTForm()">Cancel</button></td>
+        </tr>
+    </table>
+</div>

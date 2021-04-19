@@ -1,0 +1,40 @@
+<div style="padding-top: 28px;">
+    <div class="row">
+        <label class="heading-text" style="margin-left: 650px;"> Appointments</label>
+        <button class="save-button" (click)="createAppointmentFunc()" style=" margin-left: 450px;margin-bottom: 10px;">Create Appointment</button>
+    </div>
+    <div class="row"> </div>
+
+    <div [formGroup]="patientSearchForm" class="row">
+
+        <div class="row" style="margin-left: 2px;margin-bottom: 16px;">
+            <div class="col-md-3">
+                <label>Patient Name: </label>
+                <input type="text" formControlName="patientName" style="height: 35.99306px;width: 257.99306px;">
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 35px;">
+            <div class="col-50">
+                <button class="save-button" (click)="searchPatient()" style="margin-bottom: 10px; margin-right: 5px;" [disabled]="!patientSearchForm.valid">Search</button>
+            </div>
+            <div class="col-50">
+                <button class="cancel-button" (click)="cancelFormSearchPatient()">Cancel</button>
+            </div>
+        </div>
+
+        <input type="text" placeholder="Search with Appointment Date" [min]="minDate" [selectMode]="range" [rangeSeparator]="'to'" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+                     formControlName="appointmentDateRange" (dateTimeInput)="searchAppointments()" style="height: 35.99306px;width: 357.99306px;" style="height: 35.99306px;width: 357.99306px;margin-left: 583px;margin-top: 45px;">
+                     <span [owlDateTimeTrigger]="dt1"><i class="fa fa-calender"></i></span>
+                     <owl-date-time #dt1></owl-date-time>
+    </div>
+
+    <ag-grid-angular 
+                style="width: 1460px; height: 400px;"
+                class="ag-theme-alpine"                
+                [columnDefs]="columnDefs" 
+                (gridReady)="griReadyEvent($event)"
+                [gridOptions]="gridOptions"
+                >
+            </ag-grid-angular>
+</div>

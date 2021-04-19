@@ -1,0 +1,37 @@
+<div style="padding-top: 28px">
+    <div class="row">
+        <label class="heading-text"> Lab Tests</label>
+        <button class="save-button" (click)="openModal(CreateLabTestModal)" *ngIf="userType == 'NURSE' || userType == 'ADMIN'">Create New
+            Test</button>
+    </div>
+    <div class="row"> </div>
+    <br>
+    <div [formGroup]="labTestSearchForm" class="row">
+
+        <div class="row" style="margin-left: 2px;margin-bottom: 16px;">
+            <div class="col-md-3">
+                <br>
+                <input type="text" formControlName="labTestName" placeholder="Search Lab Tests"
+                    (input)="searchLabTests($event)" style="height: 35.99306px;width: 257.99306px;">
+            </div>
+        </div>
+    </div>
+
+    <ag-grid-angular style="width: 1460px; height: 425px;" class="ag-theme-alpine" [columnDefs]="columnDefs"
+        (gridReady)="griReadyEvent($event)" [gridOptions]="gridOptions">
+    </ag-grid-angular>
+</div>
+
+<ng-template #CreateLabTestModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Create Lab Test</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-10">
+            <app-register-lab-tests (closeModal)="closeModal()" (refeshGrid)="getAllLabTests()"></app-register-lab-tests>
+        </div>
+    </div>
+  </ng-template>

@@ -1,0 +1,109 @@
+<div class="action-buttons" *ngIf="data.appointmentStatus == 'BILLED' && userType != 'PATIENT'">
+    <a (click)="openConfirmAppointmentModal(ConfirmAppointment)" data-toggle="tooltip" container="body"
+        containerClass="custom-tooltip-class" tooltip="Confirm Appointment">
+        <img src="../../../../../assets/images/discharge-completed.png">
+    </a>
+</div>
+
+<div class="action-buttons" *ngIf="data.appointmentStatus == 'CONFIRMED' && userType != 'PATIENT'">
+    <a href="javascript:void(0)" (click)="openDischargeModal(DischargePatientModal)" data-toggle="tooltip"
+        container="body" containerClass="custom-tooltip-class" tooltip="Discharge Patient">
+        <img src="../../../../../assets/images/previous-visits.png">
+    </a>
+</div>
+
+<div class="action-buttons" *ngIf="data.appointmentStatus == 'REQUESTED'">
+    <a (click)="openDischargeModal(CancelAppointmentModal)" data-toggle="tooltip" container="body"
+        containerClass="custom-tooltip-class" tooltip="Cancel Appointment">
+        <img src="../../../../../assets/images/hide-alert.png">
+    </a>
+</div>
+
+<div class="action-buttons" *ngIf="data.appointmentStatus == 'REQUESTED' && userType != 'NURSE'">
+    <a (click)="openDischargeModal(BillAppointmentModal)" data-toggle="tooltip" container="body"
+        containerClass="custom-tooltip-class" tooltip="Bill Appointment">
+        <img src="../../../../../assets/images/billing-purpose.png">
+    </a>
+</div>
+
+<ng-template #ConfirmAppointment>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Confirm Appointment</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-10">
+
+            <label>Are you sure you want to confirm the appointment? </label>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <button class="save-button" (click)="confirmAppointment()" style="margin-right: 14px;">Confirm</button>
+                <button class="cancel-button" (click)="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #DischargePatientModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Discharge Patient</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeDischargeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-10">
+
+            <label>Are you sure you want to discharge the patient? </label>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <button class="save-button" (click)="dischargeAppointment()"
+                    style="margin-right: 14px;">Confirm</button>
+                <button class="cancel-button" (click)="closeDischargeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #CancelAppointmentModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Cancel Appointment</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeDischargeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-10">
+
+            <label>Are you sure you want to cancel the appointment? </label>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <button class="save-button" (click)="cancelAppointment()" style="margin-right: 14px;">Confirm</button>
+                <button class="cancel-button" (click)="closeDischargeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #BillAppointmentModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Billing</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeDischargeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-add-billin [Data]="data" (refreshGrid)="refreshAppointmnets()" (closeModal)="closeDischargeModal()" [from]="'ALL_APPOINTMENT'"></app-add-billin>
+    </div>
+</ng-template>

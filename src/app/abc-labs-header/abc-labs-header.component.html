@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <div class="fixed-header">
+        <div class="row">
+            <div class="side-bar-container" style="position: relative;" (click)="toggleSidebar()"
+                style="margin-left: 30px;margin-top: 20px;height: 30px;border-bottom-width: 0px;">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <p class="center-text" style="margin-left: 594px;font-size: 52px;margin-bottom: 0px;">ABC Labs</p>
+
+            <a  class="underlineHover"
+                style="margin-left: 300px;margin-top: 30px;">
+                <h5>{{userName}}</h5>
+            </a>
+            &nbsp; <label style="margin-top: 30px;"> - </label> &nbsp;
+            <a  class="underlineHover"
+                style="margin-top: 30px;">
+                <h5>{{userType}}</h5>
+            </a>
+            &nbsp; <label style="margin-top: 30px;">|</label> &nbsp;
+            <a href="javascript:void(0)" class="underlineHover" (click)="openModal(EditPatientModal)"
+                style="margin-top: 30px;">
+                <h5>PROFILE</h5>
+            </a>
+            &nbsp; <label style="margin-top: 30px;">|</label> &nbsp;
+            <a href="javascript:void(0)" class="underlineHover" (click)="logoutEmployee()"
+                style="margin-top: 30px;">
+                <h5>LOGOUT</h5>
+            </a>
+        </div>
+
+    </div>
+    <div class="fixed-footer">
+        <div class="container">
+            <p class="footer-text" style="margin-left: 400px;margin-bottom: 6px;">Copyright &copy; 2020 Advanced
+                Programming Assignment</p>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<ng-template #EditPatientModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Profile Details</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-abc-labs-register-patients *ngIf="userType == 'PATIENT'" [Data]="userData" (closeEditModal)="closeModal()">
+        </app-abc-labs-register-patients>
+        <app-register-employees *ngIf="userType != 'PATIENT'" [Data]="userData" (closeEditModal)="closeModal()"></app-register-employees>
+    </div>
+</ng-template>

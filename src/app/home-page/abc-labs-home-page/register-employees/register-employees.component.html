@@ -1,0 +1,198 @@
+<!-- <div style="display: flex;">
+    <div [formGroup]="employeeRegisterForm" class="row">
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>First Name: </label>
+                <input type="text"  formControlName="firstName">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label> Last Name: </label>
+                <input type="text"  formControlName="lastName">
+            </div>
+
+        </div>
+        <div class="row mt-4" *ngIf="!Data">
+            <div class="col-md-6">
+                <label>Username: </label>
+                <input type="text"  formControlName="empusern">
+            </div>
+
+        </div>
+        <div class="row mt-4" *ngIf="!Data">
+            <div class="col-md-12">
+                <label> Password: </label>
+                <input type="password"  formControlName="emppass">
+            </div>
+
+        </div>
+        <div class="row mt-4" *ngIf="!Data">
+            <div class="col-md-3">
+                <label>Re-password: </label>
+                <input type="password"  formControlName="repassword">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Email: </label>
+                <input type="text"  formControlName="email">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>DOB: </label>
+                <input type="text" autocomplete="off" bsDatepicker formControlName="dateOfBirth"
+                 [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false}"
+                 (bsValueChange)="onDateChange($event)">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>NIC: </label>
+                <input type="text"  formControlName="nic">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Contact Number: </label>
+                <input type="text"  (keypress)="inputValidator($event)" maxlength="10" formControlName="contactNumber">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Address: </label>
+                <textarea   formControlName="address"></textarea>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Staff Type: </label>
+                <select formControlName="staffType"  >
+                    <option value="">--Select--</option>
+                    <option value="RECEPTIONIST">RECEPTIONIST</option>
+                    <option value="MANAGER">MANAGER</option>
+                    <option value="NURSE">NURSE</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Gender: </label>
+                <select formControlName="gender"  >
+                    <option value="">--Select--</option>
+                    <option value="male">MALE</option>
+                    <option value="female">FEMALE</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Marital Status: </label>
+                <input type="text"  formControlName="maritalStatus">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Nationality: </label>
+                <input type="text"   formControlName="nationality">
+            </div>
+        </div>
+        <div class="row">
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <button class="button" (click)="saveEmployee()"
+                        [disabled]="!employeeRegisterForm.valid">Register</button>
+                    <button class="cancel-button" (click)="cancelFormEmployee()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div [formGroup]="employeeRegisterForm">
+    <table>
+        <tr>
+            <td><label>First Name: </label></td>
+            <td><input type="text" formControlName="firstName"  style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label> Last Name: </label></td>
+            <td><input type="text" formControlName="lastName"  style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr *ngIf="!Data">
+            <td><label>Username: </label></td>
+            <td><input type="text" formControlName="empusern"  [autocomplete]="'new-password'" style="width: 150%;"></td>
+        </tr>
+        <br *ngIf="!Data">
+        <tr *ngIf="!Data">
+            <td><label> Password: </label></td>
+            <td><input type="password" formControlName="emppass"  [autocomplete]="'new-password'" style="width: 150%;"></td>
+        </tr>
+        <br *ngIf="!Data">
+        <tr *ngIf="!Data">
+            <td><label>Re-password: </label></td>
+            <td><input type="password" formControlName="repassword"  style="width: 150%;"></td>
+        </tr>
+        <br *ngIf="!Data">
+        <tr>
+            <td><label>Email: </label></td>
+            <td><input type="text" formControlName="email"  style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>DOB: </label></td>
+            <td><input type="text" autocomplete="off" bsDatepicker formControlName="dateOfBirth"
+                    [bsConfig]="{dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false}"
+                    (bsValueChange)="onDateChange($event)"  style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>NIC: </label></td>
+            <td><input type="text" formControlName="nic"  style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Contact Number: </label></td>
+            <td><input type="text" (keypress)="inputValidator($event)"  style="width: 150%;" maxlength="10" formControlName="contactNumber">
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Address: </label></td>
+            <td><textarea formControlName="address"  style="width: 150%;"></textarea></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Staff Type: </label></td>
+            <td><select formControlName="staffType"  style="width: 150%;">
+                    <option value="">--Select--</option>
+                    <option value="RECEPTIONIST">RECEPTIONIST</option>
+                    <option value="MANAGER">MANAGER</option>
+                    <option value="NURSE">NURSE</option>
+                </select></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Gender: </label></td>
+            <td><select formControlName="gender"  style="width: 150%;">
+                    <option value="">--Select--</option>
+                    <option value="male">MALE</option>
+                    <option value="female">FEMALE</option>
+                </select></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Nationality: </label></td>
+            <td><input type="text" formControlName="nationality"  style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><button class="save-button" (click)="saveEmployee()"
+                [disabled]="!employeeRegisterForm.valid">{{saveBtnText}}</button></td>
+            <td><button class="cancel-button" (click)="cancelFormEmployee()">Cancel</button></td>
+        </tr>
+    </table>
+</div>

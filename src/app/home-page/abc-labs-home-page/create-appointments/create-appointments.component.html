@@ -1,0 +1,80 @@
+<div style="display: flex; padding-top: 28px;" class="container">
+   
+    <div [formGroup]="patientSearchForm" class="row">
+
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Pateient MRN: </label>
+                <input type="text" formControlName="patientMrn" style="height: 35.99306px;width: 257.99306px;">
+            </div>
+        </div>
+        <br>
+        <div class="row" style="flex: auto;margin-top: 10px;">
+            <div class="col-md-4">
+                <button class="save-button" (click)="searchPatient()" style="margin-bottom: 10px" [disabled]="!patientSearchForm.valid">Search</button>
+                <button class="cancel-button" (click)="cancelFormSearchPatient()">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+    <div [formGroup]="appointmentForm" class="row">
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Appointment Date: </label>
+                <!-- <input type="text" autocomplete="off" bsDatepicker formControlName="appointmentDate"
+                    [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false}" [minDate]="minDate"> -->
+                <input type="text" [min]="minDate" placeholder="Appointment Date & Time" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+                     formControlName="appointmentDate" style="height: 35.99306px;width: 257.99306px;">
+                     <owl-date-time #dt1></owl-date-time>
+            </div>
+        </div>
+
+        <!-- <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Appointment Time: </label>
+                <timepicker formControlName="appointmentTime"></timepicker> 
+            </div>
+        </div> -->
+
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label>Lab Test: </label>
+                <select formControlName="labTestId" style="height: 35.99306px;width: 257.99306px;">
+                    <option value="">--Select--</option>
+                    <option [value]="labTest.labTestId" *ngFor="let labTest of labTestData">{{labTest.labTestName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row" style="flex: auto;margin-top: 10px;">
+            <div class="col-md-3">
+                <button class="save-button" style="float: left; margin-bottom: 10px;" (click)="createAppointment()" [disabled]="!appointmentForm.valid">Save</button>
+                <button class="cancel-button" style="float: left;" (click)="cancelFormPatient()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div [formGroup]="patientDisplayForm" class="container" *ngIf="patientData">
+    <h3>Patient Details</h3>
+    <label><b>Patient MRN: &nbsp;</b> </label>{{patientData.patientId}} <br>
+    <label><b>Patient Name: &nbsp;</b></label>{{patientData.firstName + " " + patientData.lastName}} <br>
+    <label><b>Blood Group: &nbsp;</b></label>{{patientData.bloodGroup}}<br>
+    <label><b>Contact Number: &nbsp;</b></label>{{patientData.contactNumber}} <br>
+</div>
+
+<ng-template #AddBillin>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Billing</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <app-add-billin [Data]="data" (closeModal)="closeModal()" [from]="'CREATE_APPOINTMENT'"></app-add-billin>
+    </div>
+  </ng-template>

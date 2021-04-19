@@ -1,0 +1,61 @@
+<html>
+
+<header>
+    <app-abc-labs-header (menuOpenClicked)="toggleSidebar()"></app-abc-labs-header>
+</header>
+
+
+<ng-sidebar-container style="height: 100vh; position: fixed;">
+    <ng-sidebar mode="slide" [(opened)]="opened" ng-mouseover="openSideBar()" ng-mouseleave="closeSidebar"
+        animate="true" autoCollapseWidth=100>
+
+        <div *ngIf="userType != 'PATIENT'" [ngClass]="{'side-nav-row-selected' : tabName == 'PATIENTS', 'side-nav-row' : tabName != 'PATIENTS'}" (click)="tabClicked('PATIENTS')">
+            <label [ngClass]="{'sidebar-text-selected ' : tabName == 'PATIENTS', 'sidebar-text' : tabName != 'PATIENTS'}"> 
+                PATIENTS
+             </label>
+        </div>
+        <div *ngIf="userType != 'PATIENT'" [ngClass]="{'side-nav-row-selected' : tabName == 'EMPLOYEES', 'side-nav-row' : tabName != 'EMPLOYEES'}" (click)="tabClicked('EMPLOYEES')">
+            <label [ngClass]="{'sidebar-text-selected ' : tabName == 'EMPLOYEES', 'sidebar-text' : tabName != 'EMPLOYEES'}"> 
+                EMPLOYEES</label>
+        </div>
+        <div [ngClass]="{'side-nav-row-selected' : tabName == 'LAB TESTS', 'side-nav-row' : tabName != 'LAB TESTS'}" (click)="tabClicked('LAB TESTS')">
+            <label [ngClass]="{'sidebar-text-selected ' : tabName == 'LAB TESTS', 'sidebar-text' : tabName != 'LAB TESTS'}">
+                 LAB TESTS</label>
+        </div>
+        <div *ngIf="userType != 'MANAGER'" [ngClass]="{'side-nav-row-selected' : tabName == 'APPOINTMENTS', 'side-nav-row' : tabName != 'APPOINTMENTS'}" (click)="tabClicked('APPOINTMENTS')">
+            <label [ngClass]="{'sidebar-text-selected ' : tabName == 'APPOINTMENTS', 'sidebar-text' : tabName != 'APPOINTMENTS'}">
+                 APPOINTMENTS</label>
+        </div>
+        <div *ngIf="userType != 'MANAGER'" [ngClass]="{'side-nav-row-selected' : tabName == 'CREATE APPOINTMENTS', 'side-nav-row' : tabName != 'CREATE APPOINTMENTS'}" (click)="tabClicked('CREATE APPOINTMENTS')">
+            <label [ngClass]="{'sidebar-text-selected ' : tabName == 'CREATE APPOINTMENTS', 'sidebar-text' : tabName != 'CREATE APPOINTMENTS'}">
+                 CREATE APPOINTMENTS</label>
+        </div>
+        <!-- <div [ngClass]="{'side-nav-row-selected' : tabName == 'BILLING', 'side-nav-row' : tabName != 'BILLING'}" (click)="tabClicked('BILLING')">
+            <label [ngClass]="{'sidebar-text-selected ' : tabName == 'BILLING', 'sidebar-text' : tabName != 'BILLING'}"> 
+                BILLING </label>
+        </div> -->
+        <div *ngIf="userType == 'MANAGER' || userType == 'ADMIN'" [ngClass]="{'side-nav-row-selected' : tabName == 'REPORTS', 'side-nav-row' : tabName != 'REPORTS'}" (click)="tabClicked('REPORTS')">
+            <label [ngClass]="{'sidebar-text-selected ' : tabName == 'REPORTS', 'sidebar-text' : tabName != 'REPORTS'}">
+                 REPORTS</label>
+        </div>
+
+    </ng-sidebar>
+
+    <div ng-sidebar-content>
+        <div class="home-page-body" style="padding-left: 10px;">
+            <app-abc-labs-all-patients  *ngIf="tabName == 'PATIENTS'"></app-abc-labs-all-patients>
+            <app-landing-page *ngIf="tabName == 'WELCOME'"></app-landing-page>
+            <app-all-appointments *ngIf="tabName == 'APPOINTMENTS'" (createAppointment)="tabClicked('CREATE APPOINTMENTS')"></app-all-appointments>
+            <app-all-employees *ngIf="tabName == 'EMPLOYEES'"></app-all-employees>
+            <app-all-lab-tests *ngIf="tabName == 'LAB TESTS'" (createLabtests)="tabClicked('CREATE LABTESTS')"></app-all-lab-tests>
+            <app-create-appointments *ngIf="tabName == 'CREATE APPOINTMENTS'"></app-create-appointments>
+            <app-reports *ngIf="tabName == 'REPORTS'"></app-reports>
+            <app-billing *ngIf="tabName == 'BILLING'"></app-billing>
+            <!-- <app-register-employees *ngIf="tabName == 'CREATE EMPLOYEES'"></app-register-employees> -->
+            <app-register-lab-tests *ngIf="tabName == 'CREATE LABTESTS'"></app-register-lab-tests>
+        </div>
+
+    </div>
+</ng-sidebar-container>
+
+</html>

@@ -1,0 +1,18 @@
+<div class="action-buttons">
+    <a href="javascript:void(0)" (click)="openEmpEditModal(EditPatientModal)" data-toggle="tooltip" container="body"
+      containerClass="custom-tooltip-class" tooltip="Edit Patient details">
+      <img src="../../../../../assets/images/infor-icon.png">
+    </a>
+  </div>
+  
+  <ng-template #EditPatientModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit Patient Details</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- <app-abc-labs-register-patients [Data]="data" (updatedPatientDetails)="updatedPatientDetails()" (closeEditModal)="closeModal()"></app-abc-labs-register-patients> -->
+    </div>
+  </ng-template>

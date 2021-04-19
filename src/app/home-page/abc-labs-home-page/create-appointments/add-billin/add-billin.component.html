@@ -1,0 +1,110 @@
+<div>
+    <div class="container" *ngIf="Data && patientName && labTestName && appointmentBillAmount">
+        <h3>Appointment Details</h3>
+        <table>
+            <tr>
+                <td><b>Appointment Number:</b></td>
+                <td>{{Data.appointmentId}}</td>
+            </tr>
+            <tr>
+                <td><b>Patient MRN:</b></td>
+                <td>{{Data.patientId}}</td>
+            </tr>
+            <tr>
+                <td><b>Patient Name:</b></td>
+                <td>{{patientName}}</td>
+            </tr>
+            <tr>
+                <td><b>Appointment Date:</b></td>
+                <td>{{Data.appointmentDate}}</td>
+            </tr>
+            <tr>
+                <td><b>Lab Test:</b></td>
+                <td>{{labTestName}}</td>
+            </tr>
+            <tr>
+                <td><b>Cost:</b></td>
+                <td>Rs. {{appointmentBillAmount}} /=</td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row" [formGroup]="typeOfPaymentForm">
+            <table>
+                <tr>
+                    <td style="width: 130px;">
+                        <input type="radio" class="radio" value='DEBIT_CARD' formControlName="paymentType">
+                        <label>Debit Card</label>
+                    </td>
+                    <td style="width: 130px;">
+                        <input type="radio" class="radio" value='CREDIT_CARD' formControlName="paymentType">
+                        <label>Credit card</label>
+                    </td>
+                    <td style="width: 130px;" *ngIf="userType != 'PATIENT'">
+                        <input type="radio" class="radio" value='CASH' formControlName="paymentType">
+                        <label>Cash</label>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+        </div>
+
+        <div *ngIf="isCardPayment" [formGroup]="cardPaymentForm">
+            <h3>Card Payment</h3>
+            <table>
+                <tr>
+                    <td>Name on Card</td>
+                    <td><input type="text" formControlName="cardHolderName" style="width: 150%;"></td>
+                </tr><br>
+                <tr>
+                    <td>Card Number</td>
+                    <td><input type="text" formControlName="cardNumber" style="width: 150%;"></td>
+                </tr><br>
+                <tr>
+                    <td>Billing Address</td>
+                    <td><textarea formControlName="billingAddress" style="width: 150%;"></textarea></td>
+                </tr><br>
+                <tr>
+                    <td>CVC</td>
+                    <td><input type="number" max="3" placeholder="'ex. 123'" formControlName="cvc" style="width: 150%;">
+                    </td>
+                </tr><br>
+                <tr>
+                    <td>Expiration Month</td>
+                    <td><input type="text" (keypress)="inputValidator($event)" maxlength="2" placeholder="'MM'" formControlName="expirationMM"
+                            ></td>
+                </tr><br>
+                <tr>
+                    <td>Expiration Year</td>
+                    <td><input type="text" (keypress)="inputValidator($event)" maxlength="4" placeholder="'YYYY'" formControlName="expirationYYYY"
+                            ></td>
+                </tr><br>
+                <tr>
+                    <td> <button class="save-button" (click)="saveCardPayment()"
+                            style="margin-bottom: 10px; margin-right: 5px;"
+                            [disabled]="!cardPaymentForm.valid">Pay</button></td>
+                    <td><button class="cancel-button" (click)="cancelFormCard()">Cancel</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div [formGroup]="cashPaymentForm" *ngIf="isCashPayment">
+            <h3>Cash Payment</h3>
+            <table>
+                <tr>
+                    <td>Amount to pay</td>
+                    <td><input type="text" formControlName="paymentAmount" style="height: 30px;width: 150%;"></td>
+                </tr><br>
+                <tr>
+                    <td> <button class="save-button" (click)="saveCashPayment()"
+                            style="margin-bottom: 10px; margin-right: 5px;"
+                            [disabled]="!cashPaymentForm.valid">Pay</button></td>
+                    <td><button class="cancel-button" (click)="cancelFormCash()">Cancel</button></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>

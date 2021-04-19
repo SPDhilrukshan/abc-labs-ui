@@ -1,0 +1,71 @@
+<div class="action-buttons" *ngIf="data.employeeAcceptStatus == 'NEW' && (loggedUserType == 'MANAGER' || loggedUserType == 'ADMIN')">
+  <a href="javascript:void(0)" (click)="openEmpEditModal(ConfirmEmployeeModal)" data-toggle="tooltip" container="body"
+    containerClass="custom-tooltip-class" tooltip="Accept Employee Registration">
+    <img src="../../../../../assets/images/shiftendo-completed.png">
+  </a>
+</div>
+
+<div class="action-buttons" *ngIf="data.employeeAcceptStatus == 'NEW' && (loggedUserType == 'MANAGER' || loggedUserType == 'ADMIN')">
+  <a href="javascript:void(0)" (click)="openEmpEditModal(RejectEmployeeModal)" data-toggle="tooltip" container="body"
+    containerClass="custom-tooltip-class" tooltip="Reject Employee Registration">
+    <img src="../../../../../assets/images/hide-alert.png">
+  </a>
+</div>
+
+<!-- <ng-template #EditPatientModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Employee Details</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-register-employees [Data]="data" (closeEditModal)="closeModal()"></app-register-employees>
+  </div>
+</ng-template> -->
+
+<ng-template #ConfirmEmployeeModal>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">Confirm Employee Registration</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <div class="col-md-10">
+
+          <label>Are you sure you want to confirm the Employee's registration? </label>
+
+      </div>
+
+      <div class="row">
+          <div class="col-md-10">
+              <button class="save-button" (click)="updateEmployeeRegistration('ACCEPTED')" style="margin-right: 14px;">Confirm</button>
+              <button class="cancel-button" (click)="closeModal()">Cancel</button>
+          </div>
+      </div>
+  </div>
+</ng-template>
+
+<ng-template #RejectEmployeeModal>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">Reject Employee Registration</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <div class="col-md-10">
+
+          <label>Are you sure you want to reject the Employee's registration? </label>
+
+      </div>
+
+      <div class="row">
+          <div class="col-md-10">
+              <button class="save-button" (click)="updateEmployeeRegistration('REJECTED')" style="margin-right: 14px;">Confirm</button>
+              <button class="cancel-button" (click)="closeModal()">Cancel</button>
+          </div>
+      </div>
+  </div>
+</ng-template>

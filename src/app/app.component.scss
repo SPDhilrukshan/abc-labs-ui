@@ -1,0 +1,9 @@
+@import '~ngx-toastr/toastr';
+@import "~ag-grid-community/src/styles/ag-grid.scss";
+
+@import '~ag-grid-community/dist/styles/ag-grid.css';
+@import '~ag-grid-community/dist/styles/ag-theme-balham.css';
+
+.modal-header{    
+    background-color: lightgray;
+}

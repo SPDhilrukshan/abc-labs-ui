@@ -1,0 +1,67 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="node_modules/ladda/dist/ladda.min.css"> -->
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/images/abclabs.jpg" alt="User Icon">
+        </div>
+
+        <!-- Login Form -->
+        <form [formGroup]="loginForm">
+            <div>
+                <input type="text" id="login" class="fadeIn second" name="login" formControlName="username"
+                    placeholder="login">
+                <input type="password" id="password" class="fadeIn third" name="login" formControlName="password"
+                    placeholder="password">
+                
+                <select formControlName="userType" class="fadeIn">
+                    <option value="">--Select--</option>
+                    <option value="PATIENT">PATIENT</option>
+                    <option value="EMPLOYEE">EMPLOYEE</option>
+                </select>
+                <input [ladda]="loginClicked" type="submit" (click)="login($event)" [disabled]="!loginForm.valid" class="fadeIn fourth ladda-button"
+                    value="Log In">
+            </div>
+        </form>
+
+        <div id="formFooter">
+            <a class="underlineHover" href="#" (click)="openEmpEditModal(RegPatientModal)">Register as Patient...</a>
+        </div>
+        <div id="formFooter">
+            <a class="underlineHover" href="#" (click)="openEmpEditModal(RegEmployeeModal)">Register as Employee...</a>
+        </div>
+
+    </div>
+
+</div>
+
+<ng-template #RegPatientModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Register As Patient</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-abc-labs-register-patients (closeEditModal)="closeModal()"></app-abc-labs-register-patients>
+    </div>
+</ng-template>
+
+<ng-template #RegEmployeeModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Register As Employee</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-register-employees (closeEditModal)="closeModal()"></app-register-employees>
+    </div>
+</ng-template>

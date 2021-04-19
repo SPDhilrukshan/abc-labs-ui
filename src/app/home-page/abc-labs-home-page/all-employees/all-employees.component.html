@@ -1,0 +1,26 @@
+<div style="padding-top: 28px">
+    <div class="row">
+        <label class="heading-text"> Employees</label>
+        <!-- <button class="button" (click)="createNewEmployee()">New Employee</button> -->
+    </div>
+    <div class="row"> </div>
+
+    <div [formGroup]="employeeSearchForm" class="row">
+
+        <div class="row" style="margin-left: 2px;margin-bottom: 16px;">
+            <div class="col-md-3">
+                <br>
+                <input type="text" formControlName="employeeName" placeholder="Search Employees" (input)="searchEmployees($event)" style="height: 35.99306px;width: 257.99306px;">
+            </div>
+        </div>
+    </div>
+
+    <ag-grid-angular 
+                style="width: 1460px; height: 450px;"
+                class="ag-theme-alpine"                
+                [columnDefs]="columnDefs" 
+                (gridReady)="griReadyEvent($event)"
+                [gridOptions]="gridOptions"
+                >
+            </ag-grid-angular>
+</div>

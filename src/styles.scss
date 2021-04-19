@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+.save-button{
+    background-color: #4cAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+.save-button:disabled{
+    background-color: #97a397;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: none;
+    float: right;
+}
+
+.cancel-button{
+    background-color: #626362;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+.modal-header{    
+    background-color: lightgray;
+}
+
+.modal-body{
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,86 @@
+::ng-deep aside {
+    background-color:	#949292;
+    padding: 2em 1em;
+    padding-bottom: 0px;
+    height: 600px;
+    // margin-top: 22px;
+
+  }
+
+  .sidebar-text{
+    font-size: x-large;
+    color: #ffffff;
+   
+  }
+
+  .sidebar-text-selected{
+    color: #000000 !important;
+    font-size: x-large;
+  }
+
+  .side-nav-row:hover > * {
+    color: #000000 !important;
+    background: #d1d1d1;
+    border-color: #fbf3e1 !important;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+  }
+
+  .side-nav-row:hover{
+    background: #d1d1d1;
+    border-color: #fbf3e1 !important;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+  }
+
+  .side-nav-row{    
+    padding-left: 20px;    
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-right: 8px;
+
+  }
+
+  .side-nav-row-selected{
+    background: #d1d1d1;
+    border-color: #fbf3e1 !important;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+    padding-left: 20px;    
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-right: 8px;
+  }
+
+.right-arrow{
+  float: right;
+}
+
+.heading-text{
+  font-size: xx-large;
+  margin-left: 20px;
+}
+
+.button{
+  color: #494949 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #52f007;
+  padding: 12px;
+  border: 3px solid #494949 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  margin-left: 1136px;
+  margin-bottom: 10px;
+}
+
+.button:hover{
+  color: #ffffff !important;
+  background: #f6b93b;
+  border-color: #f6b93b !important;
+  transition: all 0.4s ease 0s;
+}
+
+.modal-header{    
+  background-color: lightgray;
+}

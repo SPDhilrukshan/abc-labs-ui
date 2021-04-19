@@ -1,0 +1,54 @@
+.heading-text{
+    font-size: xx-large;
+    margin-left: 20px;
+}
+
+.button{
+    color: #494949 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #52f007;
+    padding: 12px;
+    border: 3px solid #494949 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    margin-left: 1045px;
+    margin-bottom: 10px;
+}
+
+.button:hover{
+    color: #ffffff !important;
+    background: #f6b93b;
+    border-color: #f6b93b !important;
+    transition: all 0.4s ease 0s;
+}
+
+.save-button{
+    background-color: #4cAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+.save-button:disabled{
+    background-color: #97f297;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: none;
+    float: right;
+}
+
+.cancel-button{
+    background-color: #626362;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}

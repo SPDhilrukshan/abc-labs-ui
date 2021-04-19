@@ -1,0 +1,245 @@
+<!-- <div style="display: flex;" class="container">
+
+    <div [formGroup]="patientRegisterForm">
+        <div class="row">
+            <h2 *ngIf="!Data"> Patient Registration Form</h2>
+            <h2 *ngIf="Data">Patient Update Form</h2>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>First Name: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="firstName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label> Last Name: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="lastName">
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Email: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>NIC: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="nic">
+            </div>
+        </div>
+        <div class="row-md-3">
+            <div class="col-25">
+                <label>DOB: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" autocomplete="off" bsDatepicker formControlName="dateOfBirth"
+                    [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false}"
+                    (bsValueChange)="onDateChange($event)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Contact Number: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" (keypress)="inputValidator($event)" maxlength="10" formControlName="contactNumber">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Address: </label>
+            </div>
+            <div class="col-75">
+                <textarea formControlName="address"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Gender: </label>
+            </div>
+            <div class="col-75">
+                <select formControlName="gender">
+                    <option value="">--Select--</option>
+                    <option value="male">MALE</option>
+                    <option value="female">FEMALE</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label>Marital Status: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="maritalStatus">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Nationality: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="nationality">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Blood Group: </label>
+            </div>
+            <div class="col-75">
+                <select formControlName="bloodGroup">
+                    <option value="">--Select--</option>
+                    <option value="A">A</option>
+                    <option value="A+">A+</option>
+                    <option value="B">B</option>
+                    <option value="B+">B+</option>
+                    <option value="AB">AB</option>
+                    <option value="AB+">AB+</option>
+                    <option value="O">O</option>
+                    <option value="O+">O+</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Occupation: </label>
+            </div>
+            <div class="col-75">
+                <input type="text" formControlName="occupation">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 35px;">
+            <div class="col-50">
+                <button class="save-button" (click)="savePatient()" style="margin-bottom: 10px; margin-right: 5px;"
+                    [disabled]="!patientRegisterForm.valid">Register</button>
+            </div>
+            <div class="col-50">
+                <button class="cancel-button" (click)="cancelFormPatient()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div [formGroup]="patientRegisterForm">
+    <div class="row">
+        <!-- <h2 *ngIf="!Data" style="margin-left: 64px;"> Patient Registration Form</h2>
+        <h2 *ngIf="Data" style="margin-left: 90px;">Patient Update Form</h2> -->
+    </div>
+    <table>
+        <tr>
+            <td><label>First Name: </label></td>
+            <td><input type="text" formControlName="firstName" style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label> Last Name: </label></td>
+            <td><input type="text" formControlName="lastName" style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Email: </label></td>
+            <td><input type="text" formControlName="email" style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>NIC: </label></td>
+            <td><input type="text" formControlName="nic" style="width: 150%;" autocomplete="'new-password'"></td>
+        </tr>
+        <br>
+        <tr *ngIf="!Data">
+            <td><label> Password: </label></td>
+            <td><input type="password"  formControlName="emppass" style="width: 150%;" [autocomplete]="'new-password'"></td>            
+        </tr>
+        <br *ngIf="!Data">
+        <tr *ngIf="!Data">
+            <td><label>Re-password: </label></td>
+            <td><input type="password"  formControlName="repassword" style="width: 150%;"></td>
+        </tr>
+        <br *ngIf="!Data">
+        <tr>
+            <td><label>DOB: </label></td>
+            <td> <input type="text" autocomplete="off" bsDatepicker formControlName="dateOfBirth"
+                    [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false}"
+                    (bsValueChange)="onDateChange($event)" style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Contact Number: </label></td>
+            <td> <input type="text" (keypress)="inputValidator($event)" style="width: 150%;" maxlength="10" formControlName="contactNumber">
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td> <label>Address: </label></td>
+            <td><textarea formControlName="address"></textarea></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Gender: </label></td>
+            <td><select formControlName="gender">
+                    <option value="">--Select--</option>
+                    <option value="male">MALE</option>
+                    <option value="female">FEMALE</option>
+                </select></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Marital Status: </label></td>
+            <td><input type="text" formControlName="maritalStatus" style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td> <label>Nationality: </label></td>
+            <td><input type="text" formControlName="nationality" style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td> <label>Blood Group: </label></td>
+            <td><select formControlName="bloodGroup">
+                    <option value="">--Select--</option>
+                    <option value="A">A</option>
+                    <option value="A+">A+</option>
+                    <option value="B">B</option>
+                    <option value="B+">B+</option>
+                    <option value="AB">AB</option>
+                    <option value="AB+">AB+</option>
+                    <option value="O">O</option>
+                    <option value="O+">O+</option>
+                </select></td>
+        </tr>
+        <br>
+        <tr>
+            <td> <label>Occupation: </label></td>
+            <td><input type="text" formControlName="occupation" style="width: 150%;"></td>
+        </tr>
+        <br>
+        <tr>
+            <td> <button class="save-button" (click)="savePatient()" style="margin-bottom: 10px; margin-right: 5px;"
+                    [disabled]="!patientRegisterForm.valid">{{saveBtnText}}</button></td>
+            <td><button class="cancel-button" (click)="cancelFormPatient()">Cancel</button></td>
+        </tr>
+    </table>
+</div>
+
+<ng-template #PatientMRNModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Patient Details</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h4>Your MRN is {{registeredPatient.patientId}}, Use this as your username along with your password</h4>
+    </div>
+  </ng-template>
